@@ -1,0 +1,14 @@
+cout<<"fts [-abcv] EXE IP OP [CMP]\n";
+cout<<"Test EXE with input pattern IP against input pattern OP with compare CMP.\n";
+cout<<"Iterate counter from 0, substitute counter to any instance of '$' in IP and OP,\n";
+cout<<"do the test and report the result.\n";
+cout<<"\n";
+cout<<"EXE is an executable which read from STDIN and output to STDOUT.\n";
+cout<<"\n";
+cout<<"Testing behavior option (latter override former switch):\n";
+cout<<"-a	ACM mode [default]. Stop right away on a wrong test case.\n";
+cout<<"-b	Batch score mode. Run all test until a missing file encountered.\n";
+cout<<"Output option (latter override former switch):\n";
+cout<<"-c	Concise mode [default]. Only wrong test cases are displayed.\n";
+cout<<"-v	Verbose mode. Display all test cases tested.\n";
+cout<<"Run 'fts -h' for verbose help.\n";

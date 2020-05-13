@@ -1,0 +1,41 @@
+fts [-abcv] EXE IP OP [CMP]
+Test EXE with input pattern IP against input pattern OP with compare CMP.
+Iterate counter from 0, substitute counter to any instance of '$' in IP and OP,
+do the test and report the result.
+
+EXE is an executable which read from STDIN and output to STDOUT.
+
+IP and OP minilanguage
+	+ $ is placeholder for counter, which is iterated from 0
+	For example, for the pattern 'i$.txt' the files are iterated as:
+		i0.txt, i1.txt, i2.txt, ...
+	+ All not mentioned tokens are treated as literals.
+
+Compare CMP expected behavior
+	+ Is an EXEcutable.
+	+ Take 2 arguments as 2 file name to compare.
+	+ Has Cantrip interface pattern.
+		+ Expected to write nothing to stdout
+		+ Zero exit code for a positive ('identical').
+		+ Non-zero exit code for a negative ('different')
+
+Default CMP: string token-by-token comparison.
+	Blank lines are discarded.
+	Do not distinguish between spaces and tabs.
+	Multiple spaces are seen as one space.
+	Respective tokens are compared.
+	
+An invocation example
+	You run fts as 'fts E i$.txt o$.txt' using default compare.
+	E is executed with input from i0.txt. E's output is compared with o0.txt.
+	In the next phase, input would be i1.txt. Output is compared with o1.txt
+	Next phase is with i2.txt and o2.txt and so on...
+	until a number K where either iK.txt or oK.txt is not found.
+	Execution is then stopped.
+
+Testing behavior option (latter override former switch):
+-a	ACM mode [default]. Stop right away on a wrong test case.
+-b	Batch score mode. Run all test until a missing file encountered.
+Output option (latter override former switch):
+-c	Concise mode [default]. Only wrong test cases are displayed.
+-v	Verbose mode. Display all test cases tested.

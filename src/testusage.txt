@@ -1,0 +1,7 @@
+test exec inp out cmp
+Run exec < inp and compare output with out using cmp.
+exec and cmp are executable files, inp and out are text files.
+Emit no output if called with at least 3 arguments.
+Exit code 0 if cmp return 0.
+Exit code 1 if cmp return non-zero.
+Exit code 2 with any other errors.

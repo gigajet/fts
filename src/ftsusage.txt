@@ -1,0 +1,14 @@
+fts [-abcv] EXE IP OP [CMP]
+Test EXE with input pattern IP against input pattern OP with compare CMP.
+Iterate counter from 0, substitute counter to any instance of '$' in IP and OP,
+do the test and report the result.
+
+EXE is an executable which read from STDIN and output to STDOUT.
+
+Testing behavior option (latter override former switch):
+-a	ACM mode [default]. Stop right away on a wrong test case.
+-b	Batch score mode. Run all test until a missing file encountered.
+Output option (latter override former switch):
+-c	Concise mode [default]. Only wrong test cases are displayed.
+-v	Verbose mode. Display all test cases tested.
+Run 'fts -h' for verbose help.

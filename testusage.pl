@@ -1,0 +1,7 @@
+print "test exec inp out cmp\n"
+print "Run exec < inp and compare output with out using cmp.\n"
+print "exec and cmp are executable files, inp and out are text files.\n"
+print "Emit no output if called with at least 3 arguments.\n"
+print "Exit code 0 if cmp return 0.\n"
+print "Exit code 1 if cmp return non-zero.\n"
+print "Exit code 2 with any other errors.\n"

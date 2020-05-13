@@ -1,0 +1,59 @@
+ftest
+Program Input:
+	+ executable to test (EXE)
+	+ input pattern (IP)
+	+ answer output pattern (OP)
+	IP and OP comply to a minilanguage.
+	+ [optional] compare (CMP)
+Program Output:
+	+ Test status
+	+ Concise test status
+
+EXE expected rule
+	+ If called without arguments, EXE read from stdin and write to stdout.
+	+ If called one argument, EXE read from file argv[1] and write to stdout.
+	+ If called two args or more, EXE read from argv[1] and write to argv[2].
+	
+IP and OP minilanguage
+	+ $ is placeholder for counter, which is iterated from 0
+	For example, for the pattern "i$.txt" the files are iterated as:
+		i0.txt, i1.txt, i2.txt, ...
+	+ All not mentioned tokens are treated as literals.
+		
+Compare expected behavior
+	+ Is an EXEcutable.
+	+ Take 2 arguments as 2 file name to compare.
+	+ Has Cantrip interface pattern.
+		+ Expected to write nothing.
+		+ Zero exit code for a positive ("identical").
+		+ Non-zero exit code for a negative ("different")
+		
+Default CMP:
+	+ String comparison.
+		Blank lines are discarded.
+		Do not distinguish between spaces and tabs.
+		Multiple spaces are seen as one space.
+		Respective token in a line is compared.
+
+
+Program Behavior:
+	Two mode of testing:
+		+ ACM mode [default]: stop testing after first wrong test case if exists.
+		+ Batch mode (score): counter increase until a missing input or output.
+	Two mode of output:
+		+ Verbose: display all test being tested.
+		+ Concise [default]: display wrong test cases only.
+		
+
+We see that:
+	+ Just shove all option into arguments. 
+	Let the scripting program worry about "IP and OP is not change so much,
+	so get to config file instead of CLI arguments."
+	In other words, premature optimization is evil. 
+	Even optimizations for user experience.
+	+ Let the user use their CMP if they want.
+	+ Do little in a program. So split it into multiple EXEs
+		test program.
+		substitution program.
+		[default] CMP program.
+		

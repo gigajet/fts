@@ -1,0 +1,4 @@
+cmp file1 file2
+Compare file1 and file2 by content.
+Exit code 2 if either of the two file does not exists.
+cmp write nothing to output if called with 2 arguments. Just exit code.
